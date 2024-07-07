@@ -52,7 +52,7 @@ router.route('/shorten').post(async (req,res)=>{
     }
   })
 
-router.route('/auth').post(async(req,res)=>{ // landing page for non auth users
+router.route('/auth').post(async(req,res)=>{ // landing page for non auth users.
     try{
         const {email, password} = req.body
         console.log(email)
