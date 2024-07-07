@@ -15,7 +15,7 @@ const URLservice = {
       const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(password, saltRounds);
         //interesting fact
-        /**
+        /*
          becrypt takes the salted password and then it re hashesh the given password,
          if the password is correct, then the exact hash will be produced,
          now comparing both will result true everytime.
@@ -60,14 +60,28 @@ const URLservice = {
   },
   authUser:async(email1,password)=>{
     //authenticate User using json and check session
-    const user = await db.User.findOne({
-        where:{email:email1},
-        attributes:['id','password']
-    })
-    console.log(user.id)
-    console.log(user.password)
-    return 1
-
+    try{
+        const currentPassword = password
+        const user = await db.User.findOne({
+            where:{email:email1},
+            attributes:['id','password_hash','name']
+        })
+        if (user) {
+            console.log("user ID: ",user.id);
+            console.log('user password hash: ',user.password_hash);
+            // return user; // Return the user if found
+            const userAuth = await bcrypt.compare(currentPassword,user.password_hash)
+            if(userAuth){
+                console.log(user.name, " have successfully authenticated")
+                return user.name
+            }else{
+                console.log("user auth decline")
+            }
+        }
+        return null;
+    }catch(err){
+        console.log("error caught at authUser> services.js",err)
+    }
   },
   brearerTokenGen:async(userID)=>{
     // generate bearer token for the user after auth and update in session

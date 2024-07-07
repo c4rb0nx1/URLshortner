@@ -52,7 +52,7 @@ router.route('/shorten').post(async (req,res)=>{
     }
   })
 
-router.route('/auth').post(async(req,res)=>{
+router.route('/auth').post(async(req,res)=>{ // landing page for non auth users
     try{
         const {email, password} = req.body
         console.log(email)
@@ -60,9 +60,9 @@ router.route('/auth').post(async(req,res)=>{
 
         const authCheck = await URLservice.authUser(email,password)
         if(authCheck){
-            res.send("login success")
+            res.send(`login success for ${authCheck}`) // form here after successful login redirect to other page
         }else{
-            res.send("Authorisation blocked")
+            res.send("Authorisation blocked, password doesn't match")
             throw new SyntaxError("user authorisation blocked")
         }
 
