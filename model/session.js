@@ -4,7 +4,8 @@ module.exports = (sequelize) => {
         sessionID:{
             type:DataTypes.INTEGER,
             primaryKey:true,
-            alloNull:false
+            autoIncrement: true,
+            allowNull:false
         },
         userID:{
             type: DataTypes.INTEGER,
@@ -21,16 +22,14 @@ module.exports = (sequelize) => {
         },
         JWTtoken:{
             type:DataTypes.TEXT,
-            alloNull: true, //for now we making this to be null and also JWT is not gen yet, also secret is not declared yet.
+            allowNull: true, //for now we making this to be null and also JWT is not gen yet, also secret is not declared yet.
         }
 
-    },
-{
-    tableName: 'session',
-    timestampls: true,
-    createdAt: ' created_at',
-    updatedAt:'updated_at'
-
+    },{
+        tableName: 'session',
+        timestamps: true,
+        createdAt: 'created_at',
+        updatedAt: 'updated_at'
 })
     return session
 }

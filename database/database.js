@@ -8,11 +8,13 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
 
 const User = require('../model/users')(sequelize)
 const Url = require('../model/urls')(sequelize)
+const Session = require('../model/session')(sequelize)
 const db = {
     sequelize,
     Sequelize,
     User,
-    Url
+    Url,
+    Session,
   };
 
 module.exports = db

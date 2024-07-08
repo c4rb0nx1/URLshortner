@@ -2,6 +2,10 @@ const bcrypt = require('bcrypt');
 const db = require('../database/database');
 const crypto = require('crypto');
 const { where } = require('sequelize');
+const jwt = require("jsonwebtoken")
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+
 
 function randomString(length) {
   return crypto.randomBytes(Math.ceil(length / 2))
@@ -10,7 +14,7 @@ function randomString(length) {
 }
 
 const URLservice = {
-  addNewUser: async (name, email, password) => {
+  addNewUser: async (name,email,password) => {
     try {
       const saltRounds = 10;
       const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -20,16 +24,36 @@ const URLservice = {
          if the password is correct, then the exact hash will be produced,
          now comparing both will result true everytime.
          */
-      const newUser = await db.User.create({
-        name,
-        email,
-        password_hash: hashedPassword
-      })
+        const existing = await db.User.findOne({ // before adding user, check for existing user.
+            where:{email},
+            attributes:['email']
+        })
+        if(!existing){
+            const newUser = await db.User.create({
+                name,
+                email,
+                password_hash: hashedPassword
+              })
+            return { success: true, user: { id: newUser.id, name: newUser.name, email: newUser.email } };
 
-      return { success: true, user: { id: newUser.id, name: newUser.name, email: newUser.email } };
+        }else{
+            throw new Error("user exists")
+        }
     } catch (error) {
       console.error('Error adding new user:', error)
-      return { success: false, error: error.message }
+      return { success: false, message : " An error occured: user already exists with email"} };
+  },
+  removeUser: async(id)=>{
+    try{
+        const user = await db.User.findByPk(id)
+        const remove = await user.destroy()
+        if(remove){
+            console.log("deleted user successfuly")
+        }else{
+            console.log("user deletion operation failed")
+        }
+    }catch(err){
+        console.log("caught at services.js > removeUSer: "+err)
     }
   },
   shortenUrl: async (parentUrl,customAlias,id) => {
@@ -55,8 +79,33 @@ const URLservice = {
         console.log("error caught at services.js > shortenUrl "+ err)
     }
   },
-  session: async(userID,bearer_token,JWTtoken)=>{
+  removeURL:async(urlid)=>{
+    try{
+        const url = await db.Url.findByPk(urlid)
+        const remove = await url.destroy()
+        if(remove){
+            console.log("deleted URL successfuly")
+        }else{
+            console.log("URL deletion operation failed")
+        }
+    }catch(err){
+        console.log("caught at services.js > removeUSer: "+err)
+    }
+  },
+  createSession: async(userID,bearer_token,JWTtoken)=>{
     //manage session timeout and check auth status with JWT.
+    try{
+        const session = await db.Session.create({
+            userID,
+            bearer_token,
+            JWTtoken,
+        })
+        return {success:true, message:"session created successfully"}
+    }catch(err){
+        console.log("error caught at create session ",err)
+        return {success:false, message:"Error creating user session check logs"}
+    }
+
   },
   authUser:async(email1,password)=>{
     //authenticate User using json and check session
@@ -85,9 +134,73 @@ const URLservice = {
   },
   brearerTokenGen:async(userID)=>{
     // generate bearer token for the user after auth and update in session
-    
-
+    const bearerToken = randomString(10)
+    return {id:userID,token:bearerToken}
   },
+  getUser: async(email)=>{
+    const user = await db.User.findOne({
+        where:{email:email},
+        attributes:['id','password_hash','name']
+    })
+    if(user){
+        return user
+    }else{
+        throw new Error("user not found")
+    }
+  },
+  jwtCookieGen:async(userObject)=>{ // user is an object
+    console.log(userObject)
+    console.log(process.env.JWT_SECRET)
+    const token = jwt.sign(userObject,process.env.JWT_SECRET,{expiresIn:"3h"})
+    return token
+  },
+  checkJWT: (req,res,next)=>{
+   try{
+    const token =  req.cookies.JWToken
+    console.log("Found token: ", token)
+    if(token){
+        const verify = URLservice.verifyJWT(token)
+        console.log(verify)
+        if(verify){
+            req.redir = '/shorten'
+        }else{
+            req.redir = '/auth'
+        }
+    }else{
+        res.redirect("/newuser")
+        console.log("serevice.js > checkJWT: no token found")
+    }
+    next()
+   }catch(err){
+    console.log('caught at services.js > checkJWT: ',err)
+    next()
+   }
+  },
+  verifyJWT: async(token)=>{
+    try{
+        const check = jwt.verify(token,process.env.JWT_SECRET)
+        console.log("logging Check: ",check)
+        return true
+    }catch(err){
+        return false
+    }
+  },
+  checkSession:async(req,res,next)=>{
+    const userID = req.body.userID
+    const userSession = await db.Session.findOne({
+        where:{userID},
+        attributes:['sessionID','bearer_token','JWTtoken']
+    })
+    const verifySession = await URLservice.verifyJWT(userSession.JWTtoken)
+    if(verifySession){
+        console.log("user session active")
+        req.redir = '/shorten'
+    }else{
+        console.log("user session timeout") 
+        req.redir = '/auth'
+    }
+    next()
+  }
 };
 
 module.exports = URLservice;
