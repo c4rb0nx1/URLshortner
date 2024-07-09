@@ -12,3 +12,23 @@
 {"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:26:02.714Z"}
 {"level":"info","message":"incoming request GET","timestamp":"2024-07-09T09:26:06.963Z"}
 {"level":"info","message":"incoming request GET","timestamp":"2024-07-09T09:26:06.970Z"}
+{"level":"info","message":"incoming request GET","timestamp":"2024-07-09T09:33:53.632Z"}
+{"level":"info","message":"incoming request GET","timestamp":"2024-07-09T09:33:53.639Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:34:20.095Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:34:41.653Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]},"error":"Bad Request","level":"error","message":"ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-09T09:34:41.657Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:35:14.264Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:35:29.630Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:37:46.292Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-09T09:37:46.295Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:38:19.636Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-09T09:38:19.639Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:39:15.880Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]},"error":"Bad Request","level":"info","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-09T09:39:15.883Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:39:26.740Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-09T09:39:26.743Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:43:55.351Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-09T09:43:55.354Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:44:51.583Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-09T09:44:51.584Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:45:18.886Z"}

@@ -7,6 +7,8 @@ const sequelize = require('../database/database');
 const URLservice = require('./services')
 const cookieParser = require('cookie-parser')
 const logger = require('./logger')
+const { ValidationError } = require('express-validation'); // Import ValidationError
+
 
 
 
@@ -23,6 +25,11 @@ app.use((req,res,next)=>{
 //routes
 app.use('/shortner',routes) // add jwt middle ware here, if session exists > /shorten else > /auth
 
-
+app.use((err,req,res,next)=>{
+    if(err instanceof ValidationError){
+        logger.error(`error logged at app.js: ${err.name}`,err)
+    }
+    res.send(err)
+})
 
 module.exports = app
