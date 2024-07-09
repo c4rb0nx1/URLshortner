@@ -1,6 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const URLservice = require('../services')
+const userValidation = require('../validation/userValidation')
+const urlValidation = require('../validation/urlValidation')
+const { validate, ValidationError, Joi } = require('express-validation');
 
 router.route('/test').get(URLservice.checkJWT,(req,res)=>{
     // res.send("test running")
@@ -14,7 +17,7 @@ router.route('/test').get(URLservice.checkJWT,(req,res)=>{
 })
 
 
-router.route('/newuser').post(async(req,res)=>{
+router.route('/newuser').post(validate(userValidation.newUserValidation),async(req,res)=>{
     //service.js -> add new user
     try{
         const { name, email, password } = req.body
@@ -50,7 +53,7 @@ router.route('/newuser').post(async(req,res)=>{
     }
 })
 
-router.route('/shorten').post(URLservice.checkSession,async (req,res)=>{
+router.route('/shorten').post(validate(urlValidation.shortenValidation),URLservice.checkSession,async (req,res)=>{
     // handle shortening service
     try{
         const parentUrl = req.body.parentUrl
@@ -68,7 +71,7 @@ router.route('/shorten').post(URLservice.checkSession,async (req,res)=>{
     }
   })
 
-router.route('/auth').post(async(req,res)=>{ // landing page for non auth users.
+router.route('/auth').post(validate(userValidation.authValidation),async(req,res)=>{ // landing page for non auth users.
     try{
         const {email, password} = req.body
         console.log(email)
@@ -89,9 +92,9 @@ router.route('/auth').post(async(req,res)=>{ // landing page for non auth users.
     }
 })
 
-router.route('/removeuser/:id').post(URLservice.checkSession,async(req,res,id)=>{
+router.route('/removeuser').post(validate(userValidation.removeUserValidation),URLservice.checkSession,async(req,res,id)=>{
     try{
-        const id= req.params.id
+        const id= req.query.id
         const op = await URLservice.removeUser(id)
         console.log("exited remove user operation")
     }catch(err){
@@ -99,9 +102,9 @@ router.route('/removeuser/:id').post(URLservice.checkSession,async(req,res,id)=>
     }
 })
 
-router.route('/removeurl/:urlid').post(URLservice.checkSession,async(req,res,urlid)=>{
+router.route('/removeurl').post(validate(urlValidation.removeUrlValidation),URLservice.checkSession,async(req,res,urlid)=>{
     try{
-        const urlid = req.params.urlid
+        const urlid = req.query.urlid
         const op = await URLservice.removeURL(urlid)
         console.log("exited remove URL operation")
     }catch(err){
@@ -109,8 +112,19 @@ router.route('/removeurl/:urlid').post(URLservice.checkSession,async(req,res,url
     }
 })
 
-router.route('/:short').get(URLservice.checkSession,(req,res)=>{
+router.route('/redirect/:short').get(validate(urlValidation.redirectValidation),URLservice.checkSession,async (req,res)=>{
     //handle the redirection here once URL is registered.
+    const shortURL = req.params.short
+    console.log("recieved shorten URL :",shortURL)
+    const redirect = await URLservice.shortenRedirect(shortURL)
+    if(redirect.success){
+        res.redirect(redirect.parentUrl)
+        console.log(redirect.parentUrl)
+        console.log("redirection success")
+    }else{
+        console.log("redirection failed")
+    }
+
 })
 
 module.exports = router

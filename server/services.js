@@ -66,7 +66,7 @@ const URLservice = {
             alias = randomString(5)
             console.log("alias empty, random string generated: ",alias)
         }
-        const shortURL = parent + '/' + alias 
+        const shortURL = '/' + alias 
         const userID = id
         const shortern = await db.Url.create({
             parentURL:parent,
@@ -186,7 +186,12 @@ const URLservice = {
     }
   },
   checkSession:async(req,res,next)=>{
-    const userID = req.body.userID
+    let userID = req.body.userID
+    console.log("logging at checksession: ", userID)
+    if(!userID){
+        userID = req.query.id
+        console.log("logging at checksession: ", userID)
+    }
     const userSession = await db.Session.findOne({
         where:{userID},
         attributes:['sessionID','bearer_token','JWTtoken']
@@ -200,6 +205,26 @@ const URLservice = {
         req.redir = '/auth'
     }
     next()
+  },
+  shortenRedirect:async(shortURL)=>{
+    try {
+        const urlRecord = await db.Url.findOne({
+          where: {
+            shortURL: '/'+shortURL,
+          },
+          attributes: ['parentURL']
+        });
+        console.log("urlRecord: "+urlRecord)
+        if (urlRecord) {
+            console.log("redirecting to parent URL")
+            return {success:true, parentUrl: urlRecord.get('parentURL')}
+        } else {
+          console.log(`Short URL not found`);
+            return {success:false}
+        }
+      } catch (error) {
+        console.log('Error in URL redirection', { error: error.message, stack: error.stack });
+      }
   }
 };
 
