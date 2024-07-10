@@ -32,3 +32,6 @@
 {"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:44:51.583Z"}
 {"details":{"body":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-09T09:44:51.584Z"}
 {"level":"info","message":"incoming request POST","timestamp":"2024-07-09T09:45:18.886Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-09T10:52:45.084Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidmlqYXkgYW50b255IiwiZW1haWwiOiJwZXJzb24xQGdtYWlsLmNvbSIsImlhdCI6MTcyMDUyMjM2NSwiZXhwIjoxNzIwNTMzMTY1fQ.fdEwy8P4ilhR7L_ACADuHF5DM6ypia_5VLQz_0lCbjk","timestamp":"2024-07-09T10:52:45.223Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-09T10:52:45.228Z"}
