@@ -35,3 +35,117 @@
 {"level":"info","message":"incoming request POST","timestamp":"2024-07-09T10:52:45.084Z"}
 {"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidmlqYXkgYW50b255IiwiZW1haWwiOiJwZXJzb24xQGdtYWlsLmNvbSIsImlhdCI6MTcyMDUyMjM2NSwiZXhwIjoxNzIwNTMzMTY1fQ.fdEwy8P4ilhR7L_ACADuHF5DM6ypia_5VLQz_0lCbjk","timestamp":"2024-07-09T10:52:45.223Z"}
 {"level":"info","message":"session created successfuly","timestamp":"2024-07-09T10:52:45.228Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-10T12:06:19.541Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"asd"},"message":"\"name\" with value \"asd\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-10T12:06:19.546Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-10T12:08:36.645Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"asd"},"message":"\"name\" with value \"asd\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-10T12:08:36.649Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-10T12:08:55.519Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibmlyYW5jaGFuIiwiZW1haWwiOiJhc2Rhc2RAZ21haWwuY29tIiwiaWF0IjoxNzIwNjEzMzM1LCJleHAiOjE3MjA2MjQxMzV9.ZeyTXbxf4PXQVCRYAigrs7i_D_DBFoINcbezieGaRDo","timestamp":"2024-07-10T12:08:55.632Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-10T12:08:55.638Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-10T12:56:07.202Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXNlcjIiLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsImlhdCI6MTcyMDYxNjE2NywiZXhwIjoxNzIwNjI2OTY3fQ.TOBncp7x8q3q1AHHec7A9toKo61pJUzAD6iNV3Q3Ims","timestamp":"2024-07-10T12:56:07.297Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-10T12:56:07.303Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-10T13:03:44.584Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiamFsZWJpIiwiZW1haWwiOiJqYWxlYmlAamFsZWJpLmNvbSIsImlhdCI6MTcyMDYxNjYyNCwiZXhwIjoxNzIwNjI3NDI0fQ.qzDACiWGM8Er-Hj9Lif8JsQqG1fC8VIGXWxd1VzX_wU","timestamp":"2024-07-10T13:03:44.684Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-10T13:03:44.688Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:09:38.216Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibmlyYW5jaGFuIiwiZW1haWwiOiJuaXJhbkAxNDcwLmNvbSIsImlhdCI6MTcyMDY3ODE3OCwiZXhwIjoxNzIwNjg4OTc4fQ.-rZMupDqryaaMJ-_fOzLVrPtX_qgjf7MCGrlRsCqsPI","timestamp":"2024-07-11T06:09:38.316Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-11T06:09:38.322Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:13:56.889Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:13:56.993Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:18:39.489Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibmlyYW5jaGFuRCIsImVtYWlsIjoiTmlyYW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNjc4NzE5LCJleHAiOjE3MjA2ODk1MTl9.X-4UwbWIUHRMnRTkUo2BLQtuFqanJBHvW5yKagFrUH8","timestamp":"2024-07-11T06:18:39.601Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-11T06:18:39.606Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:18:49.324Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:18:49.402Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:23:10.069Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:23:10.169Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:24:04.554Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:24:04.628Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:28:35.122Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:28:35.225Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:28:42.729Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:28:42.817Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:28:56.415Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:28:56.517Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:29:15.796Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"asd"},"message":"\"name\" with value \"asd\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T06:29:15.800Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:29:40.256Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:29:40.360Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:29:50.780Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:29:50.890Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:31:33.387Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:31:33.482Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:31:40.090Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:31:40.173Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:34:10.028Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibmlyYW5jaGFuIiwiZW1haWwiOiJzTmlyYW5AZ21haWwuY29tIiwiaWF0IjoxNzIwNjc5NjUwLCJleHAiOjE3MjA2OTA0NTB9.pbIyf1N9iReBbiHkBfwNoCO7-5VvgUhDywWJV4q-Vzg","timestamp":"2024-07-11T06:34:10.131Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-11T06:34:10.133Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:36:02.603Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"asd"},"message":"\"name\" with value \"asd\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T06:36:02.606Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:37:22.722Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T06:37:22.830Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:47:52.538Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibmlyYW5jaGFuIiwiZW1haWwiOiJOaXJhbkBnbWFhc2RpbC5jb20iLCJpYXQiOjE3MjA2ODA0NzIsImV4cCI6MTcyMDY5MTI3Mn0.B6jIzWrQzebTngOjmpOfTEzPtNGlhk3e4Kp4jigNUDs","timestamp":"2024-07-11T06:47:52.622Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-11T06:47:52.624Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:48:03.627Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYXNkYXNkIiwiZW1haWwiOiJhc2FzZEBnbWFpbC5jb20iLCJpYXQiOjE3MjA2ODA0ODMsImV4cCI6MTcyMDY5MTI4M30.9pg5XflT4qih6EtSFYawwiwYTtA0cERthVpFbHdvs6A","timestamp":"2024-07-11T06:48:03.715Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-11T06:48:03.720Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:49:25.262Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"asd"},"message":"\"name\" with value \"asd\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T06:49:25.263Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:49:43.724Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"wqe"},"message":"\"name\" with value \"wqe\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T06:49:43.725Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:50:08.843Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoid2Vxd2Vhc2QiLCJlbWFpbCI6ImFzZHdhQGdtYWlsLmNvbSIsImlhdCI6MTcyMDY4MDYwOCwiZXhwIjoxNzIwNjkxNDA4fQ.MspDSEONUrONsFi-abVjWwQSVd_J9MYvlvMUEYJ1TZk","timestamp":"2024-07-11T06:50:08.937Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-11T06:50:08.940Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:52:34.692Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"asd"},"message":"\"name\" with value \"asd\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T06:52:34.693Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:54:06.913Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"a"},"message":"\"name\" with value \"a\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T06:54:06.916Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:54:22.678Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"a"},"message":"\"name\" with value \"a\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T06:54:22.679Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:54:59.837Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"a"},"message":"\"name\" with value \"a\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T06:54:59.839Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T06:58:31.686Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T06:58:31.687Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:00:19.863Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:00:19.864Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:01:30.235Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:01:30.237Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:02:13.597Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:02:13.599Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:02:14.526Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:02:14.528Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:02:15.634Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:02:15.635Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:02:16.928Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:02:16.929Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:02:46.865Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:02:46.867Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:02:47.405Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:02:47.407Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:03:11.486Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:03:11.487Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:03:40.997Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:03:40.999Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:04:25.928Z"}
+{"details":{"body":[{"context":{"key":"name","label":"name","regex":{},"value":"aa"},"message":"\"name\" with value \"aa\" fails to match the required pattern: /[a-zA-Z]{4,30}/","path":["name"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:04:25.930Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:12:11.087Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password","regex":{},"value":"niran@1234"},"message":"\"password\" with value \"niran@1234\" fails to match the required pattern: /[a-zA-Z0-9]{8,30}/","path":["password"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:12:11.092Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:12:32.336Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password","regex":{},"value":"Niran@1234"},"message":"\"password\" with value \"Niran@1234\" fails to match the required pattern: /[a-zA-Z0-9]{8,30}/","path":["password"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T07:12:32.338Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:14:09.838Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibmlyYW5jaGFuIiwiZW1haWwiOiJuaXJhbkBnbWFpbC5pbiIsImlhdCI6MTcyMDY4MjA0OSwiZXhwIjoxNzIwNjkyODQ5fQ.itAsCgxU4MOLIHBbypVCHC3l6s03sG5JYCT8khF0K3Q","timestamp":"2024-07-11T07:14:09.925Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-11T07:14:09.928Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:20:24.732Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoibmlyYW4iLCJlbWFpbCI6Im5pcmFuMTIzQGdtYWlsLmluIiwiaWF0IjoxNzIwNjgyNDI0LCJleHAiOjE3MjA2OTMyMjR9.FHao7rDdar115dVkpjz7rkvSoWVXhTA6-z_UzGnOq_U","timestamp":"2024-07-11T07:20:24.870Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-11T07:20:24.877Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T07:20:28.656Z"}
+{"level":"info","message":"adding new user failed","timestamp":"2024-07-11T07:20:28.736Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T08:33:48.481Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password","regex":{},"value":"asdasd"},"message":"\"password\" with value \"asdasd\" fails to match the required pattern: /[a-zA-Z0-9@#%&]{8,30}/","path":["password"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T08:33:48.490Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T08:33:53.806Z"}
+{"details":{"body":[{"context":{"key":"password","label":"password","regex":{},"value":"Asd@123"},"message":"\"password\" with value \"Asd@123\" fails to match the required pattern: /[a-zA-Z0-9@#%&]{8,30}/","path":["password"],"type":"string.pattern.base"}]},"error":"Bad Request","level":"error","message":"error logged at app.js: ValidationError Validation Failed","name":"ValidationError","statusCode":400,"timestamp":"2024-07-11T08:33:53.808Z"}
+{"level":"info","message":"incoming request POST","timestamp":"2024-07-11T08:33:55.454Z"}
+{"level":"info","message":"Created JWT at /newuser using jwtCookieGen eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiYXNkYXNkIiwiZW1haWwiOiJhc2Rhc2RAZ21haWwuY29tIiwiaWF0IjoxNzIwNjg2ODM1LCJleHAiOjE3MjA2OTc2MzV9.8u-6WpvETEAmn9j-g-KqEw-O0LyOcOSx2PCrf5PazTs","timestamp":"2024-07-11T08:33:55.568Z"}
+{"level":"info","message":"session created successfuly","timestamp":"2024-07-11T08:33:55.573Z"}
