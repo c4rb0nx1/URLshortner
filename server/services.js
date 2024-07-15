@@ -5,7 +5,7 @@ const { where } = require('sequelize');
 const jwt = require("jsonwebtoken")
 const path = require('path')
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
-
+const logger = require('./logger')
 
 function randomString(length) {
   return crypto.randomBytes(Math.ceil(length / 2))
@@ -56,25 +56,48 @@ const URLservice = {
         console.log("caught at services.js > removeUSer: "+err)
     }
   },
+  checkAlias:async(id,customAlias)=>{
+    const alias = await db.Url.findAll({ // before adding user, check for existing user.
+        where:{userID:id},
+        attributes:['customAlias']
+    })
+    for(let aliases of alias){
+        if (aliases.customAlias === customAlias) {
+            return false; // Alias already exists for this user
+
+        }
+
+    }
+    return true
+  }
+  ,
   shortenUrl: async (parentUrl,customAlias,id) => {
     try{
         const parent = parentUrl
         let alias = customAlias
         //need to check status
-        const status = 200;
-        if(!alias){
-            alias = randomString(5)
-            console.log("alias empty, random string generated: ",alias)
+        // add check alias exists for that user
+        const aliasCheck = await URLservice.checkAlias(id,customAlias)
+        if(aliasCheck){  
+            const status = 200;
+            if(!alias){
+                alias = randomString(5)
+                console.log("alias empty, random string generated: ",alias)
+            }
+            const shortURL = '/' + alias 
+            const userID = id
+            const shortern = await db.Url.create({
+                parentURL:parent,
+                shortURL,
+                customAlias: alias,
+                userID,
+                status
+            })
+            return true
+        }else{
+            return false
+
         }
-        const shortURL = '/' + alias 
-        const userID = id
-        const shortern = await db.Url.create({
-            parentURL:parent,
-            shortURL,
-            customAlias: alias,
-            userID,
-            status
-        })
     }catch(err){
         console.log("error caught at services.js > shortenUrl "+ err)
     }
@@ -118,13 +141,14 @@ const URLservice = {
         if (user) {
             console.log("user ID: ",user.id);
             console.log('user password hash: ',user.password_hash);
-            // return user; // Return the user if found
             const userAuth = await bcrypt.compare(currentPassword,user.password_hash)
+            logger.info("user: "+user.id)
             if(userAuth){
-                console.log(user.name, " have successfully authenticated")
-                return user.name
+                logger.info(user.name+ " valid credentials, loggin req forwarded")
+                return true
             }else{
                 console.log("user auth decline")
+                return false 
             }
         }
         return null;
@@ -148,19 +172,27 @@ const URLservice = {
         throw new Error("user not found")
     }
   },
-  jwtCookieGen:async(userObject)=>{ // user is an object
-    console.log(userObject)
-    console.log(process.env.JWT_SECRET)
-    const token = jwt.sign(userObject,process.env.JWT_SECRET,{expiresIn:"3h"})
-    return token
-  },
+  jwtCookieGen: async (userObject) => {
+    console.log(userObject);
+    console.log(process.env.JWT_SECRET);
+    const token = jwt.sign(
+        { 
+            id: userObject.id, 
+            name: userObject.name, 
+            email: userObject.email 
+        },
+        process.env.JWT_SECRET,
+        { expiresIn: "3h" }
+    );
+    return token;
+},
   checkJWT: (req,res,next)=>{
    try{
     const token =  req.cookies.JWToken
     console.log("Found token: ", token)
     if(token){
         const verify = URLservice.verifyJWT(token)
-        console.log(verify)
+        logger.info(verify)
         if(verify){
             req.redir = '/shorten'
         }else{
@@ -182,29 +214,29 @@ const URLservice = {
         console.log("logging Check: ",check)
         return true
     }catch(err){
+        logger.error("error logged at verifyJWT: "+err)
         return false
     }
   },
   checkSession:async(req,res,next)=>{
-    let userID = req.body.userID
-    console.log("logging at checksession: ", userID)
-    if(!userID){
-        userID = req.query.id
-        console.log("logging at checksession: ", userID)
+    try {
+        const token = req.cookies.JWToken;
+        if (!token) {
+            return res.status(401).json({ status: 'logged_out', message: "No session found, please login" });
+        }
+        
+        const verifySession = await URLservice.verifyJWT(token);
+        if (verifySession) {
+            console.log("user session active");
+            next();
+        } else {
+            console.log("user session timeout");
+            return res.status(401).json({ status: 'logged_out', message: "User session timed out, please re-login" });
+        }
+    } catch (err) {
+        console.error("Error in checkSession:", err);
+        return res.status(500).json({ status: 'error', message: "Internal server error" });
     }
-    const userSession = await db.Session.findOne({
-        where:{userID},
-        attributes:['sessionID','bearer_token','JWTtoken']
-    })
-    const verifySession = await URLservice.verifyJWT(userSession.JWTtoken)
-    if(verifySession){
-        console.log("user session active")
-        req.redir = '/shorten'
-    }else{
-        console.log("user session timeout") 
-        req.redir = '/auth'
-    }
-    next()
   },
   shortenRedirect:async(shortURL)=>{
     try {
@@ -225,7 +257,14 @@ const URLservice = {
       } catch (error) {
         console.log('Error in URL redirection', { error: error.message, stack: error.stack });
       }
-  }
+  },
+  getUrlsByUserId: async(userID)=>{
+        const urls = await db.Url.findAll({
+          where: { userID },
+          attributes: ['parentURL', 'customAlias'],
+        })
+        return urls;
+  },
 };
 
 module.exports = URLservice;

@@ -19,7 +19,7 @@ const Register = () => {
     try {
       await register(name, email, password)
       setSuccess(true)
-      navigate('/auth')
+      navigate('/shorten')
     } catch (err) {
       setError(err.message || 'An error occurred during registration');
     }

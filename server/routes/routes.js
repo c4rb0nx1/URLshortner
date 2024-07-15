@@ -7,12 +7,6 @@ const { validate, ValidationError, Joi } = require('express-validation');
 const logger = require('../logger')
 
 router.route('/test').get(URLservice.checkJWT,(req,res)=>{
-    // res.send("test running")
-    // res.redirect('https://c4rb0n.in');
-    // res.send({
-    //     addnewuser:"/newuser",
-    //     shortenUrl:"/shorten",
-    // })
     res.redirect("/shortner"+req.redir)
     logger.info('Redirected successfuly to ',req.redir)
 })
@@ -62,34 +56,70 @@ router.route('/shorten').post(validate(urlValidation.shortenValidation),URLservi
         const userID = req.body.userID
         logger.info(parentUrl, '\n'+customAlias,'\n'+userID)
         const addingUrl = await URLservice.shortenUrl(parentUrl,customAlias,userID)
+        if(addingUrl){
         res.status(200).json({
             parent_url: parentUrl,
             alias : customAlias,
-            user_id:userID
+            userID,
+            status:'success',
         })
+        }else{
+            res.status(412).json({
+                parent_url: parentUrl,
+                alias : customAlias,
+                userID,
+                status:'alias already taken by the user',
+            })
+        }
     }catch(err){
         logger.info("error caught at routes.js > /shorten endpoint: ",err)
     }
   })
 
-router.route('/auth').post(validate(userValidation.authValidation),async(req,res)=>{ // landing page for non auth users.
-    try{
-        const {email, password} = req.body
-        // console.log(email)
-        // console.log(password)
+  router.route('/auth').post(validate(userValidation.authValidation), async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const authCheck = await URLservice.authUser(email, password);
+        
+        if (authCheck) {
+            // Clear existing JWT cookie if present
+            if (req.cookies.JWToken) {
+                res.clearCookie('JWToken');
+            }
 
-        const authCheck = await URLservice.authUser(email,password)
-        if(authCheck){
-            res.redirect("/shorten")
-            logger.info(`login success for ${authCheck}`) // form here after successful login redirect to other page
-        }else{
-            res.send("Authorisation blocked, password doesn't match")
-            throw new SyntaxError("user authorisation blocked")
+            const userName = await URLservice.getUser(email);
+            logger.info("log : userName: " + userName.name);
+            const user = { id: userName.id, name: userName.name, email: email };
+            
+            const token = await URLservice.jwtCookieGen(user);
+            logger.info("Created JWT at /auth using jwtCookieGen " + token);
+            
+            const bearer = await URLservice.brearerTokenGen(userName.id);
+            const session = await URLservice.createSession(bearer.id, bearer.token, token);
+            logger.info("Session created successfully");
+            
+            res.cookie("JWToken", token, {
+                // secure: process.env.NODE_ENV === 'production' // Use secure in production
+            }).json({
+                status: "success",
+                message: "Login successful",
+                userName: userName.name,
+                token
+            });
+            
+            logger.info(`Login success for ${userName.name}`);
+        } else {
+            res.status(401).json({
+                status: "error",
+                message: "Authorization blocked, password doesn't match"
+            });
         }
-
-
-    }catch(err){
-
+    } catch (err) {
+        logger.error("Error in /auth route:", err);
+        res.status(500).json({
+            status: "error",
+            message: "An internal error occurred during authentication"
+        });
     }
 })
 
@@ -113,8 +143,10 @@ router.route('/removeurl').post(validate(urlValidation.removeUrlValidation),URLs
     }
 })
 
-router.route('/redirect/:short').get(validate(urlValidation.redirectValidation),URLservice.checkSession,async (req,res)=>{
+router.route('/redirect/:short').get(validate(urlValidation.redirectValidation),async (req,res)=>{
     //handle the redirection here once URL is registered.
+    //sample format:
+    //http://localhost:9999/shortner/redirect/ert?id=71
     const shortURL = req.params.short
     logger.info("recieved shorten URL :",shortURL)
     const redirect = await URLservice.shortenRedirect(shortURL)
@@ -126,6 +158,22 @@ router.route('/redirect/:short').get(validate(urlValidation.redirectValidation),
         logger.error("redirection failed")
     }
 
+})
+
+router.route('/urls').get(URLservice.checkSession,async (req,res)=>{
+    // send urls for the UserID
+    const id = req.query.id
+    if(!id) {
+        return res.status(400).json({ error: 'userID query parameter is required' });
+    }
+    const urls = await URLservice.getUrlsByUserId(id)
+    urls.message = 'success'
+    if(urls){
+        logger.info(urls)
+        res.status(200).json(urls)
+    }else{
+        res.status(404).json(urls.message)
+    }
 })
 
 module.exports = router

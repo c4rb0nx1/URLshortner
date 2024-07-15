@@ -14,11 +14,15 @@ const Login = () => {
     e.preventDefault();
     setError('');
     setSuccess(false);
-
+  
     try {
-      await login(email, password);
-      setSuccess(true);
-      navigate('/dashboard'); // Assuming you have a dashboard route
+      const loginSuccess = await login(email, password);
+      if (loginSuccess) {
+        setSuccess(true);
+        navigate('/shorten');
+      } else {
+        setError('Login failed. Please try again.');
+      }
     } catch (err) {
       setError(err.message || 'An error occurred during login');
     }

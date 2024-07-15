@@ -9,8 +9,9 @@ const UserUrls = () => {
   useEffect(() => {
     const fetchUrls = async () => {
       try {
-        const response = await getUserUrls();
-        setUrls(response.urls);
+        const userID = localStorage.getItem('userID'); // Retrieve userID from localStorage
+        const urls = await getUserUrls(userID);
+        setUrls(urls);
       } catch (err) {
         setError(err.message || 'An error occurred while fetching URLs');
       }
@@ -24,12 +25,11 @@ const UserUrls = () => {
       <h2>Your URLs</h2>
       {error && <p className="error">{error}</p>}
       <ul>
-        {urls.map((url) => (
-          <li key={url.shortUrl}>
-            <a href={url.shortUrl} target="_blank" rel="noopener noreferrer">
-              {url.shortUrl}
-            </a>{' '}
-            - {url.originalUrl}
+        {urls.map((url, index) => (
+          <li key={index}>
+            <a href={url.parentUrl} target="_blank" rel="noopener noreferrer">
+              {url.parentUrl} : {url.customAlias || url.parentUrl}
+            </a>
           </li>
         ))}
       </ul>
